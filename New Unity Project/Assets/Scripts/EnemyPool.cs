@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class EnemyPool : MonoBehaviour
 {
 
@@ -17,6 +18,7 @@ public class EnemyPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = (GameObject)Instantiate(enemy);
+            obj.name = "Enemy_" + (i+1);
             poolObjects.Add(obj);
             obj.SetActive(false);
         }
@@ -37,6 +39,21 @@ public class EnemyPool : MonoBehaviour
                 Debug.Log("Error creating pool object.");
             }
         }
+
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            for (int i = 0; i < activeObjects.Count; i++)
+            {
+                //if (activeObjects[i].isAlive())
+                //isAlive(activeObjects[i]);
+            }
+            if (activeObjects.Count > 0)
+            {
+                Destroy(activeObjects[activeObjects.Count - 1]);
+                Debug.Log("Pool object destroyed.");
+            }
+        }
     }
 
     public void Spawn(GameObject obj)
@@ -50,14 +67,10 @@ public class EnemyPool : MonoBehaviour
         }
     }
 
-    public void Destroy(GameObject pooledObject)
+    public void Destroy(GameObject obj)
     {
-        EnemyPool poolableObject = pooledObject.GetComponent <EnemyPool>();
-        if (pooledObject == null)
-        {
-            Debug.LogError("Trying to destroy a non poolable object");
-            return;
-        }
-        poolableObject.Destroy(pooledObject);
+        obj.SetActive(false);
+        poolObjects.Add(obj);
+        activeObjects.Remove(obj);
     }
 }

@@ -13,6 +13,7 @@ public class EnemyDestroy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        //enemy.grounded = true;
+        Debug.Log("Colision");
+        enemy.alive = false;
     }
 }
