@@ -3,16 +3,16 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-    public bool alive;
     public float initialVerticalVelocity = 0;
     public float initialHorizontalVelocity = 0;
     public float verticalSpeed;
     public float horizontalSpeed;
-    float speed = 1f;
-    float verticalVelocity;
-    float horizontalVelocity;
-    int horizontalDirection;
-    float time;
+    private bool alive;
+    private float speed = 1f;
+    private float verticalVelocity;
+    private float horizontalVelocity;
+    private int horizontalDirection;
+    private float time;
 
 
     void Start () {
@@ -20,9 +20,11 @@ public class Enemy : MonoBehaviour {
         verticalVelocity = initialVerticalVelocity;
         horizontalVelocity = initialHorizontalVelocity;
         horizontalDirection = 1;
+        time = 0;
     }
-	
-	void Update () {
+    
+
+    void Update () {
         time += Time.deltaTime;
         verticalVelocity += speed * Time.deltaTime * verticalSpeed;
         horizontalVelocity += speed * Time.deltaTime * horizontalSpeed;
@@ -35,7 +37,21 @@ public class Enemy : MonoBehaviour {
 
     }
 
-    public bool isAlive(){
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Enemy colision");
+        alive = false;
+    }
+
+
+    public bool isAlive()
+    {
         return alive;
+    }
+
+    public void Restart()
+    {
+        Start();
     }
 }

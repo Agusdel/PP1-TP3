@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyDestroy : MonoBehaviour
 {
 
-    private Enemy enemy;
+    /*private Enemy enemy;
 
     void Start()
     {
@@ -15,5 +15,5 @@ public class EnemyDestroy : MonoBehaviour
     {
         Debug.Log("Colision");
         enemy.alive = false;
-    }
+    }*/
 }
