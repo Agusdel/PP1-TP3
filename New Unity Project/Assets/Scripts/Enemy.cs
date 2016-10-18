@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Enemy colision");
+        Debug.Log("Enemy collision");
         exploded = true;
         time = 0;
         explotionTime = time;

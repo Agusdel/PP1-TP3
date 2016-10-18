@@ -6,7 +6,6 @@ public class BulletPool : MonoBehaviour {
 
     public int poolSize = 30;
     public GameObject bullet;
-    //public float initialYPosition = -3.27f;
     private List<GameObject> activeObjects;
     private List<GameObject> poolObjects;
 

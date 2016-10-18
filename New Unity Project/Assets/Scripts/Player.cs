@@ -6,12 +6,15 @@ public class Player : MonoBehaviour {
     public float maxSpeed = 18f;
     public float boundary = 10;
     public float speed = 1f;
+    public float initialX = 0f;
+    public float initialY = -4.48f;
     private Vector3 initialPosition;
     private Rigidbody2D rb2d;
     private float horizontalSpeed;
     private BulletPool bulletPool;
 
     void Start () {
+        transform.position = new Vector3(initialX,initialY,transform.position.z);
         initialPosition = transform.position;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         horizontalSpeed = 0;

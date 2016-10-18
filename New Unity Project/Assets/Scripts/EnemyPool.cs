@@ -28,19 +28,6 @@ public class EnemyPool : MonoBehaviour
 
     public void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (poolObjects.Count > 0)
-            {
-                Spawn(poolObjects[poolObjects.Count - 1]);
-                Debug.Log("Pool object created.");
-            }
-            else
-            {
-                Debug.Log("Error creating pool object.");
-            }
-        }
         // desactivo los que colisionaron o los que tocaron el fondo.
         for (int i = 0; i < activeObjects.Count; i++)
         {
@@ -50,29 +37,20 @@ public class EnemyPool : MonoBehaviour
                 Debug.Log("Pool object destroyed.");
                 Destroy(activeObjects[i]);
             }
-            if (enemy.transform.position.y <= -5.5f)
+            /*if (enemy.transform.position.y <= -5.5f)
             {
                 Debug.Log("You lose.");
                 perdio = true;
-            }
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (activeObjects.Count > 0)
-            {
-                Destroy(activeObjects[activeObjects.Count - 1]);
-                Debug.Log("Pool object destroyed.");
-            }
+            }*/
         }
     }
 
-    public void Spawn(GameObject obj)
+    public void Spawn(float initialX, float initialY)
     {
         if (poolObjects.Count > 0)
         {
-            obj.transform.position = new Vector2(Random.Range(-2f, 2f), 6.26f);
+            GameObject obj = poolObjects[poolObjects.Count - 1];
+            obj.transform.position = new Vector2(initialX, initialY);//new Vector2(Random.Range(-2f, 2f),6.26f);
             Enemy enemy = obj.GetComponent<Enemy>();
             if (enemy != null){
                 enemy.Restart();

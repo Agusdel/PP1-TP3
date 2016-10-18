@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Bullet colision");
+        Debug.Log("Bullet collision");
         exploded = true;
         explotionTime = time;
     }
