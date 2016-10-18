@@ -9,11 +9,13 @@ public class Player : MonoBehaviour {
     private Vector3 initialPosition;
     private Rigidbody2D rb2d;
     private float horizontalSpeed;
+    private BulletPool bulletPool;
 
     void Start () {
         initialPosition = transform.position;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         horizontalSpeed = 0;
+        bulletPool = gameObject.GetComponent<BulletPool>();
     }
 	
 	void Update ()
@@ -38,5 +40,11 @@ public class Player : MonoBehaviour {
             rb2d.velocity = new Vector2(-rb2d.velocity.x, rb2d.velocity.y);
         }
 
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            bulletPool.Spawn(transform.position.x - 0.7f, transform.position.y + 1.2f);
+            bulletPool.Spawn(transform.position.x + 0.7f, transform.position.y + 1.2f);
+        }
     }
 }
